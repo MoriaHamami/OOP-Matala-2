@@ -10,7 +10,7 @@ Transaction::Transaction(Account *s, Account *d, double amount, const char *date
 
 Transaction::Transaction(const Transaction &other)
 {
-    // Is this enough?
+    // WRONG ? Is this enough?
     Transaction(other.m_source, other.m_destination, other.m_amount, other.m_date);
 }
 
@@ -28,7 +28,13 @@ void Transaction::SetAmount(double amount)
 }
 void Transaction::SetDate(const char *date)
 {
+    if (m_date != nullptr) delete[] m_date;
+    int size = strlen(date);
+    m_date = new char[size + 1];
     strcpy(m_date, date);
+
+    // WRONG ? Should I just do this:
+    // strcpy(m_date, date);
 }
 Account *Transaction::GetSource() const
 {
