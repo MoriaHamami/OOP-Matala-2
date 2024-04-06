@@ -163,6 +163,7 @@ void Account::AddPerson(const Person &newPerson, double amount)
 	{
 		temp[i] = m_persons[i];
 	}
+	// temp[m_totalPersons] = newPerson;
 	temp[m_totalPersons] = new Person(newPerson);
 	m_totalPersons++;
 	if (m_persons)

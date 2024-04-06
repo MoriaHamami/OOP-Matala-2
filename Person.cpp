@@ -9,15 +9,22 @@ Person::Person()
 
 Person::Person(const char *name, int id)
 {
+    m_name = nullptr;
     SetId(id);
     SetName(name);
 }
 
 Person::Person(const Person &other)
 {
-    // WRONG? Should I use get func?
-    Person(other.m_name, other.m_id);
-
+    m_name = nullptr;
+    // WRONG!!! LESSON - You cannot do the following:
+    // Person(other.m_name, other.m_id);
+    // This causes the person to 
+    // get deleted at the end of the scope
+    // and calls the destructor.
+    // Instead do this:
+    SetId(other.m_id);
+    SetName(other.m_name);
     // WRONG? Should I do this:
     // SetId(other.m_id);
     // SetName(other.m_name);
@@ -25,12 +32,14 @@ Person::Person(const Person &other)
 
 Person::~Person()
 {
-    delete[] m_name;
+    if (m_name != nullptr)
+        delete[] m_name;
 }
 
 void Person::SetName(const char *newName)
 {
-    if (m_name != nullptr) delete[] m_name;
+    if (m_name != nullptr)
+        delete[] m_name;
     int size = strlen(newName);
     m_name = new char[size + 1];
     strcpy(m_name, newName);
