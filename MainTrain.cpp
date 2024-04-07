@@ -1,16 +1,10 @@
 ﻿#include "Bank.h"
-
-// I added
-#include "Account.cpp"
-#include "Person.cpp"
-#include "Transaction.cpp"
-
 #include <iostream>
 using namespace std;
 
 int main() //Train
 {
-	// Bank bank( "The First International Bank of Israel​ Ltd", 31 );
+	Bank bank( "The First International Bank of Israel​ Ltd", 31 );
 	Account account;
 	Person lior( "Lior Li", 20145876 );
 	Person liam( "Liam Winter", 2048741 );
@@ -18,8 +12,8 @@ int main() //Train
 	double currentA, currentB, currentC;
 
 	/*****************************A**************************************/
-	// if( 0 != strcmp(bank.GetBankName(), "The First International Bank of Israel​ Ltd" ) )
-	// 	cout << "Error in creating a bank object(-4)" << endl;
+	if( 0 != strcmp(bank.GetBankName(), "The First International Bank of Israel​ Ltd" ) )
+		cout << "Error in creating a bank object(-4)" << endl;
 
 	/*****************************B**************************************/
 	account.AddPerson( Person( "Amit Choen", 30292827 ), 10000 );
@@ -34,12 +28,12 @@ int main() //Train
 		cout << "Error in adding a Person to the account(-4)" << endl;
 
 	/*****************************C**************************************/
-	// bank.AddAccount( account );
-	// if( bank.GetTotal() != 15000 )
-	// 	cout << "Error in adding an account to the bank(-4)" << endl;
+	bank.AddAccount( account );
+	if( bank.GetTotal() != 15000 )
+		cout << "Error in adding an account to the bank(-4)" << endl;
 
-	// if( bank.GetNumberOfAccounts() != 1 )
-	// 	cout << "Error in updating the a count of account in the bank(-4)" << endl;
+	if( bank.GetNumberOfAccounts() != 1 )
+		cout << "Error in updating the a count of account in the bank(-4)" << endl;
 
 	// bank.AddAccount( Account( Person( "Dor Levi", 32145672 ), 10 ) );
 	// if( bank.GetTotal() != 15010 )

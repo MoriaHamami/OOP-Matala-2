@@ -9,14 +9,17 @@ Person::Person()
 
 Person::Person(const char *name, int id)
 {
-    m_name = nullptr;
+    // CHANGED
+    // m_name = nullptr;
     SetId(id);
     SetName(name);
 }
 
 Person::Person(const Person &other)
 {
-    m_name = nullptr;
+    // CHANGED
+    // m_name = nullptr;
+
     // WRONG!!! LESSON - You cannot do the following:
     // Person(other.m_name, other.m_id);
     // This causes the person to 
@@ -32,14 +35,27 @@ Person::Person(const Person &other)
 
 Person::~Person()
 {
-    if (m_name != nullptr)
-        delete[] m_name;
+    // CHANGED
+    // if (m_name != nullptr) {
+    //     delete[] m_name;
+    //     // WRONG? I think this is needed because
+    //     // After deleteing person, it goes to bank and tries to delete person 
+    //     // but its garbage so it cant
+    //     m_name=nullptr;
+    // }
+    // CHANGED 2
+    // if(m_name){
+    //     delete m_name;
+    // }
+    delete m_name;
 }
 
 void Person::SetName(const char *newName)
 {
-    if (m_name != nullptr)
-        delete[] m_name;
+    // CHANGED
+    // if (m_name != nullptr)
+    //     delete[] m_name;
+    
     int size = strlen(newName);
     m_name = new char[size + 1];
     strcpy(m_name, newName);
