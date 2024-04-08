@@ -1,5 +1,8 @@
 #include "Transaction.h"
 
+// MORIA HAMAMI
+// 315464347
+
 Transaction::Transaction(Account *s, Account *d, double amount, const char *date)
 {
     SetAmount(amount);
@@ -14,15 +17,6 @@ Transaction::Transaction(const Transaction &other)
     SetDate(other.GetDate());
     SetSource(other.GetSource());
     SetDes(other.GetDes());
-    // CHANGED 2
-    // SetAmount(other.m_amount);
-    // SetDate(other.m_date);
-    // SetSource(other.m_source);
-    // SetDes(other.m_destination);
-
-    // CHANGED
-    // WRONG ? Is this enough? I think not
-    // Transaction(other.m_source, other.m_destination, other.m_amount, other.m_date);
 }
 
 void Transaction::SetSource(Account *src)
@@ -42,15 +36,9 @@ void Transaction::SetAmount(double amount)
 
 void Transaction::SetDate(const char *date)
 {
-    // CHANGED
-    // if (m_date != nullptr) delete[] m_date;
-    
     int size = strlen(date);
     m_date = new char[size + 1];
     strcpy(m_date, date);
-
-    // WRONG ? Should I just do this:
-    // strcpy(m_date, date);
 }
 
 Account *Transaction::GetSource() const
